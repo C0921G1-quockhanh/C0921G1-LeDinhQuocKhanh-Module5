@@ -1,0 +1,26 @@
+<form class="container-fluid">
+
+  <div class="mb-3">
+    <label for="firstNum" class="form-label">First Number: </label>
+    <input type="text" class="form-control" id="firstNum" name="firstNum" placeholder="Type first number"
+           [(ngModel)]="firstNum">
+  </div>
+
+  <div class="mb-3">
+    <label for="secondNum" class="form-label">Second Number: </label>
+    <input type="text" class="form-control" id="secondNum" name="secondNum" placeholder="Type second number"
+           [(ngModel)]="secondNum">
+  </div>
+
+  <div class="mb-3">
+    <label for="result" class="form-label">Result: </label>
+    <input type="text" class="form-control" id="result" disabled value="{{result}}">
+  </div>
+
+  <button type="submit" class="btn btn-primary bg-secondary" value="+" (click)="calculateResult($event.target.value)">Addition</button>
+  <button type="submit" class="btn btn-primary bg-secondary ms-3" value="-" (click)="calculateResult($event.target.value)">Subtraction</button>
+  <button type="submit" class="btn btn-primary bg-secondary ms-3" value="*" (click)="calculateResult($event.target.value)">Multiplication</button>
+  <button type="submit" class="btn btn-primary bg-secondary ms-3" value="/" (click)="calculateResult($event.target.value)">Division</button>
+
+</form>
+

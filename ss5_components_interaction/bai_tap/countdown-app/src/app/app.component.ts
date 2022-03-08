@@ -18,13 +18,4 @@ export class AppComponent {
       }
     }, 1000);
   }
-
-  // stopCountdown() {
-  //   const temp = this.time;
-  //
-  //   const interval = setInterval(() => {
-  //     this.time = temp;
-  //     clearInterval(interval);
-  //   }, 1000);
-  // }
 }

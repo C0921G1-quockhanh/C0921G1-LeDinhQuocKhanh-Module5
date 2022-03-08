@@ -122,6 +122,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "countdown-app"
+    }
+  },
+  "defaultProject": "countdown-app",
+  "cli": {
+    "analytics": "99a80d6e-875e-4d57-bc10-542e9bf5077f"
+  }
 }

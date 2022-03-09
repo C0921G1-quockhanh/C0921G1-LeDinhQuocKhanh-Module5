@@ -1,0 +1,144 @@
+<div class="container-fluid">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email: </label>
+      <input type="text" class="form-control" id="email" name="email" formControlName="email">
+    </div>
+
+    <div class="mb-3 text-danger"
+          *ngIf="registerForm.get('email').hasError('required') &&
+                  (registerForm.get('email').dirty || registerForm.get('email').touched)">
+      Please type email!
+    </div>
+
+    <div class="mb-3 text-danger"
+         *ngIf="registerForm.get('email').hasError('email') &&
+                  (registerForm.get('email').dirty || registerForm.get('email').touched)">
+      Please type right email format!
+    </div>
+
+    <div formGroupName="groupPassword">
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password: </label>
+        <input type="password" class="form-control" id="password" name="password" formControlName="password">
+      </div>
+
+      <div class="mb-3 text-danger"
+           *ngIf="registerForm.get('groupPassword').get('password').hasError('required') &&
+                  (registerForm.get('groupPassword').get('password').dirty || registerForm.get('groupPassword').get('password').touched)">
+        Please type password!
+      </div>
+
+      <div class="mb-3 text-danger"
+           *ngIf="registerForm.get('groupPassword').get('password').hasError('minlength') &&
+                  (registerForm.get('groupPassword').get('password').dirty || registerForm.get('groupPassword').get('password').touched)">
+        Password should be greater than 6 characters!
+      </div>
+
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Confirm Password: </label>
+        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword">
+      </div>
+
+      <div class="mb-3 text-danger"
+           *ngIf="registerForm.get('groupPassword').get('confirmPassword').hasError('required') &&
+                  (registerForm.get('groupPassword').get('confirmPassword').dirty || registerForm.get('groupPassword').get('confirmPassword').touched)">
+        Please type password to confirm!
+      </div>
+
+      <div class="mb-3 text-danger"
+           *ngIf="registerForm.get('groupPassword').get('confirmPassword').hasError('minlength') &&
+                  (registerForm.get('groupPassword').get('confirmPassword').dirty || registerForm.get('groupPassword').get('confirmPassword').touched)">
+        Password should be greater than 6 characters!
+      </div>
+
+      <div class="mb-3 text-danger"
+           *ngIf="registerForm.get('groupPassword').hasError('notConfirm') &&
+                  (registerForm.get('groupPassword').get('confirmPassword').dirty || registerForm.get('groupPassword').get('confirmPassword').touched)">
+        Please type password you wrote!
+      </div>
+
+    </div>
+
+    <div class="mb-3">
+      <label for="country" class="form-label">Country: </label>
+
+      <select class="form-select" id="country" name="country" formControlName="country">
+        <option selected="selected">--Choose country--</option>
+        <option *ngFor="let country of countries" value="{{country}}">{{country}}</option>
+      </select>
+
+    </div>
+
+    <div class="mb-3 text-danger"
+         *ngIf="registerForm.get('country').hasError('required') &&
+                  (registerForm.get('country').dirty || registerForm.get('country').touched)">
+      Please choose one country!
+    </div>
+
+    <div class="mb-3">
+      <label for="age" class="form-label">Age: </label>
+      <input type="text" class="form-control" id="age" name="age" formControlName="age">
+    </div>
+
+    <div class="mb-3 text-danger"
+         *ngIf="registerForm.get('age').hasError('required') &&
+                  (registerForm.get('age').dirty || registerForm.get('age').touched)">
+      Please type age!
+    </div>
+
+    <div class="mb-3 text-danger"
+         *ngIf="registerForm.get('age').hasError('min') &&
+                  (registerForm.get('age').dirty || registerForm.get('age').touched)">
+      Age should be greater than 18!
+    </div>
+
+    <div class="mb-3">
+      <label>Gender: </label>
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="gender" id="gender" formControlName="gender" value="male">
+        <label class="form-check-label" for="gender">
+          Male
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="gender" id="gender" formControlName="gender" value="female">
+        <label class="form-check-label" for="gender">
+          Female
+        </label>
+      </div>
+
+    </div>
+
+    <div class="mb-3 text-danger"
+         *ngIf="registerForm.get('gender').hasError('required') &&
+                  (registerForm.get('gender').dirty || registerForm.get('gender').touched)">
+      Please choose one gender!
+    </div>
+
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone number: </label>
+      <input type="text" class="form-control" id="phone" name="phone" formControlName="phone">
+    </div>
+
+    <div class="mb-3 text-danger"
+         *ngIf="registerForm.get('phone').hasError('required') &&
+                  (registerForm.get('phone').dirty || registerForm.get('phone').touched)">
+      Please type phone number!
+    </div>
+
+    <div class="mb-3 text-danger"
+         *ngIf="registerForm.get('phone').hasError('pattern') &&
+                  (registerForm.get('phone').dirty || registerForm.get('phone').touched)">
+      Please type right phone format!
+    </div>
+
+    <button type="submit" class="btn btn-secondary">Register</button>
+
+  </form>
+
+</div>

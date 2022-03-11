@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../../service/product.service';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Product} from '../../model/product';
 import {FormControl, FormGroup} from '@angular/forms';
 
@@ -16,7 +16,8 @@ export class UpdateProductComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -26,14 +27,14 @@ export class UpdateProductComponent implements OnInit {
     });
 
     this.productUpdateForm = new FormGroup({
-      id: new FormControl(),
+      // id: new FormControl(),
       name: new FormControl(),
       price: new FormControl(),
       description: new FormControl(),
     });
 
-    this.productUpdateForm.setValue({
-      id: this.product.id,
+    this.productUpdateForm.patchValue({
+      // id: this.product.id,
       name: this.product.name,
       price: this.product.price,
       description: this.product.description
@@ -45,7 +46,10 @@ export class UpdateProductComponent implements OnInit {
 
   onSubmit() {
     const product = this.productUpdateForm.value;
+    product.id = this.product.id;
+    // console.log(product);
     this.productService.updateProductById(this.product.id, product);
+    this.router.navigateByUrl('/product/list').then(r => console.log('back to list!'));
   }
 
 }

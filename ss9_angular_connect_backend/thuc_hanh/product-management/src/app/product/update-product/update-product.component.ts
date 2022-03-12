@@ -11,8 +11,9 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class UpdateProductComponent implements OnInit {
 
-  product: Product;
+  // product: Product;
   productUpdateForm: FormGroup;
+  id: number;
 
   constructor(
     private productService: ProductService,
@@ -22,34 +23,57 @@ export class UpdateProductComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      const id = Number(paramMap.get('id'));
-      this.product = this.productService.findProductById(id);
+      this.id = Number(paramMap.get('id'));
+      this.getProduct(this.id);
+
     });
 
-    this.productUpdateForm = new FormGroup({
-      // id: new FormControl(),
-      name: new FormControl(),
-      price: new FormControl(),
-      description: new FormControl(),
-    });
-
-    this.productUpdateForm.patchValue({
-      // id: this.product.id,
-      name: this.product.name,
-      price: this.product.price,
-      description: this.product.description
-    });
+    // this.productUpdateForm = new FormGroup({
+    //   // id: new FormControl(),
+    //   name: new FormControl(),
+    //   price: new FormControl(),
+    //   description: new FormControl(),
+    // });
+    //
+    // this.productUpdateForm.patchValue({
+    //   // id: this.product.id,
+    //   name: this.product.name,
+    //   price: this.product.price,
+    //   description: this.product.description
+    // });
 
     // this.productUpdateForm.controls.id.disable();
 
   }
 
+  getProduct(id: number) {
+    return this.productService.findProductById(id).subscribe(product => {
+      this.productUpdateForm = new FormGroup({
+        name: new FormControl(product.name),
+        price: new FormControl(product.price),
+        description: new FormControl(product.description),
+
+        category: new FormGroup({
+          name: new FormControl(product.category.name)
+        })
+      });
+    });
+  }
+
   onSubmit() {
+    // const product = this.productUpdateForm.value;
+    // product.id = this.product.id;
+    // // console.log(product);
+    // this.productService.updateProductById(this.product.id, product);
+    // this.router.navigateByUrl('/product/list').then(r => console.log('back to list!'));
+
     const product = this.productUpdateForm.value;
-    product.id = this.product.id;
-    // console.log(product);
-    this.productService.updateProductById(this.product.id, product);
-    this.router.navigateByUrl('/product/list').then(r => console.log('back to list!'));
+    this.productService.updateProductById(this.id,product).subscribe(() => {
+      console.log('update success!');
+      this.router.navigateByUrl('/product/list').then(r => console.log('back to list!'));
+    }, error => {
+      console.log(error);
+    })
   }
 
 }

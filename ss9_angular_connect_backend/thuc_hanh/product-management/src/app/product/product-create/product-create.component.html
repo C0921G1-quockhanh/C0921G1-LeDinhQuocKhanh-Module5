@@ -2,12 +2,12 @@
 
 <form [formGroup]="productForm" (ngSubmit)="submit()">
   <table>
-    <tr>
-      <td>Mã sản phẩm:</td>
-      <td>
-        <input type="number" formControlName="id">
-      </td>
-    </tr>
+<!--    <tr>-->
+<!--      <td>Mã sản phẩm:</td>-->
+<!--      <td>-->
+<!--        <input type="number" formControlName="id">-->
+<!--      </td>-->
+<!--    </tr>-->
 
     <tr>
       <td>Tên  sản phẩm:</td>
@@ -29,6 +29,15 @@
         <input type="text" formControlName="description">
       </td>
     </tr>
+
+    <div formGroupName="category">
+      <tr>
+        <td>Danh mục sản phẩm:</td>
+        <td>
+          <input type="text" formControlName="name">
+        </td>
+      </tr>
+    </div>
 
     <tr>
       <td></td>

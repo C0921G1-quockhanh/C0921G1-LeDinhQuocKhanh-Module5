@@ -15,18 +15,31 @@ export class ProductCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.productForm = new FormGroup({
-      id: new FormControl(),
+      // id: new FormControl(),
       name: new FormControl(),
       price: new FormControl(),
       description: new FormControl(),
+
+      category: new FormGroup({
+        name: new FormControl()
+      })
     });
   }
 
   submit() {
+    // const product = this.productForm.value;
+    // this.productService.saveProduct(product);
+    // this.productForm.reset();
+    // console.log('create success!');
+
     const product = this.productForm.value;
-    this.productService.saveProduct(product);
-    this.productForm.reset();
-    console.log('create success!');
+    this.productService.saveProduct(product).subscribe(() => {
+      this.productForm.reset();
+      console.log('add success!');
+      // console.log(product);
+    }, error => {
+      console.log(error);
+    })
   }
 
 }

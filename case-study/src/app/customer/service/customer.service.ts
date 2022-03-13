@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Contract} from "../../model/contract/contract";
+import {Customer} from "../model/customer";
 
 const JSON_URL = `${environment.jsonUrl}`;
 
@@ -10,11 +10,15 @@ const JSON_URL = `${environment.jsonUrl}`;
 @Injectable({
   providedIn: 'root'
 })
-export class ContractService {
+export class CustomerService {
 
   constructor(private http: HttpClient) { }
 
-  getAllContracts(): Observable<Contract[]> {
-    return this.http.get<Contract[]>(JSON_URL + '/contracts');
+  getAllCustomers(): Observable<Customer[]> {
+    return this.http.get<Customer[]>(JSON_URL + '/customers');
+  }
+
+  saveCustomer(customer): Observable<Customer> {
+    return this.http.post<Customer>(JSON_URL + '/customers', customer);
   }
 }

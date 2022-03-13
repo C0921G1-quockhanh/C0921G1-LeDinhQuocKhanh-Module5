@@ -2,19 +2,18 @@ import { Injectable } from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ServiceType} from "../../model/service/service-type";
+import {RentalType} from "../model/rental-type";
 
 const JSON_URL = `${environment.jsonUrl}`;
-
 
 @Injectable({
   providedIn: 'root'
 })
-export class ServiceTypeService {
+export class RentalTypeService {
 
   constructor(private http: HttpClient) { }
 
-  getAllServiceTypes(): Observable<ServiceType[]> {
-    return this.http.get<ServiceType[]>(JSON_URL + '/serviceTypes');
+  getAllRentalTypes(): Observable<RentalType[]> {
+    return this.http.get<RentalType[]>(JSON_URL + '/rentalTypes');
   }
 }

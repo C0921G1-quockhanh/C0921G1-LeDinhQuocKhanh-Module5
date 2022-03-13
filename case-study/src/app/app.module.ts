@@ -3,25 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomePageComponent } from './component/home-page/home-page.component';
-import { ListCustomersComponent } from './component/customer/list-customers/list-customers.component';
-import { EditCustomerComponent } from './component/customer/edit-customer/edit-customer.component';
-import { CreateCustomerComponent } from './component/customer/create-customer/create-customer.component';
-import { ListServicesComponent } from './component/service/list-services/list-services.component';
-import { CreateServiceComponent } from './component/service/create-service/create-service.component';
-import { ListContractsComponent } from './component/contract/list-contracts/list-contracts.component';
-import { CreateContractComponent } from './component/contract/create-contract/create-contract.component';
-import {HttpClientModule} from "@angular/common/http";
-import {ReactiveFormsModule} from "@angular/forms";
-import { EditServiceComponent } from './component/service/edit-service/edit-service.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { ListServicesComponent } from './facility/component/list-services/list-services.component';
+import { CreateServiceComponent } from './facility/component/create-service/create-service.component';
+import { ListContractsComponent } from './contract/component/list-contracts/list-contracts.component';
+import { CreateContractComponent } from './contract/component/create-contract/create-contract.component';
+import { EditServiceComponent } from './facility/component/edit-service/edit-service.component';
+import {CustomerConfigModule} from "./customer/customer-config/customer-config.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    ListCustomersComponent,
-    EditCustomerComponent,
-    CreateCustomerComponent,
     ListServicesComponent,
     CreateServiceComponent,
     ListContractsComponent,
@@ -31,8 +24,7 @@ import { EditServiceComponent } from './component/service/edit-service/edit-serv
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule
+    CustomerConfigModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

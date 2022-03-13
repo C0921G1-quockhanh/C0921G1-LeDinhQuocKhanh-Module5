@@ -4,16 +4,16 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './component/home-page/home-page.component';
-import { ListCustomersComponent } from './component/list-customers/list-customers.component';
-import { EditCustomerComponent } from './component/edit-customer/edit-customer.component';
-import { CreateCustomerComponent } from './component/create-customer/create-customer.component';
-import { ListServicesComponent } from './component/list-services/list-services.component';
-import { CreateServiceComponent } from './component/create-service/create-service.component';
-import { ListEmployeesComponent } from './component/list-employees/list-employees.component';
-import { CreateEmployeeComponent } from './component/create-employee/create-employee.component';
-import { EditEmployeeComponent } from './component/edit-employee/edit-employee.component';
-import { ListContractsComponent } from './component/list-contracts/list-contracts.component';
-import { CreateContractComponent } from './component/create-contract/create-contract.component';
+import { ListCustomersComponent } from './component/customer/list-customers/list-customers.component';
+import { EditCustomerComponent } from './component/customer/edit-customer/edit-customer.component';
+import { CreateCustomerComponent } from './component/customer/create-customer/create-customer.component';
+import { ListServicesComponent } from './component/service/list-services/list-services.component';
+import { CreateServiceComponent } from './component/service/create-service/create-service.component';
+import { ListContractsComponent } from './component/contract/list-contracts/list-contracts.component';
+import { CreateContractComponent } from './component/contract/create-contract/create-contract.component';
+import {HttpClientModule} from "@angular/common/http";
+import {ReactiveFormsModule} from "@angular/forms";
+import { EditServiceComponent } from './component/service/edit-service/edit-service.component';
 
 @NgModule({
   declarations: [
@@ -24,15 +24,15 @@ import { CreateContractComponent } from './component/create-contract/create-cont
     CreateCustomerComponent,
     ListServicesComponent,
     CreateServiceComponent,
-    ListEmployeesComponent,
-    CreateEmployeeComponent,
-    EditEmployeeComponent,
     ListContractsComponent,
-    CreateContractComponent
+    CreateContractComponent,
+    EditServiceComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

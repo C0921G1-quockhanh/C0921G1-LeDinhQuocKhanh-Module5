@@ -1,10 +1,10 @@
 import {CustomerType} from './customer-type';
 
 export interface Customer {
-  customerId?: number;
+  id?: string;
   customerName?: string;
   dateOfBirth?: string;
-  sex?: boolean;
+  sex?: string;
   identityNumber?: string;
   phoneNumber?: string;
   email?: string;

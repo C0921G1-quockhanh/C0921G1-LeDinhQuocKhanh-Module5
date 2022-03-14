@@ -17,7 +17,6 @@
       "rentalTypeName": "hour"
     }
   ],
-
   "serviceTypes": [
     {
       "serviceTypeId": 1,
@@ -32,7 +31,6 @@
       "serviceTypeName": "Room"
     }
   ],
-
   "facilities": [
     {
       "serviceId": 1,
@@ -40,17 +38,14 @@
       "serviceArea": 25000,
       "rentalCost": 1000000,
       "maxPeople": 10,
-
       "rentalType": {
         "rentalTypeId": 3,
         "rentalTypeName": "day"
       },
-
       "serviceType": {
         "serviceTypeId": 1,
         "serviceTypeName": "Villa"
       },
-
       "roomStandard": "vip",
       "extraAmenity": "Có hồ bơi",
       "poolArea": 500,
@@ -62,17 +57,14 @@
       "serviceArea": 14000,
       "rentalCost": 500000,
       "maxPeople": 7,
-
       "rentalType": {
         "rentalTypeId": 2,
         "rentalTypeName": "month"
       },
-
       "serviceType": {
         "serviceTypeId": 2,
         "serviceTypeName": "House"
       },
-
       "roomStandard": "vip",
       "extraAmenity": "Có thêm bếp nướng",
       "levels": 3
@@ -83,17 +75,14 @@
       "serviceArea": 5000,
       "rentalCost": 100000,
       "maxPeople": 2,
-
       "rentalType": {
         "rentalTypeId": 4,
         "rentalTypeName": "hour"
       },
-
       "serviceType": {
         "serviceTypeId": 3,
         "serviceTypeName": "Room"
       },
-
       "roomStandard": "normal",
       "extraAmenity": "Có tivi"
     },
@@ -103,17 +92,14 @@
       "serviceArea": 22000,
       "rentalCost": 900000,
       "maxPeople": 8,
-
       "rentalType": {
         "rentalTypeId": 3,
         "rentalTypeName": "day"
       },
-
       "serviceType": {
         "serviceTypeId": 1,
         "serviceTypeName": "Villa"
       },
-
       "roomStandard": "normal",
       "extraAmenity": "Có hồ bơi",
       "poolArea": 300,
@@ -125,17 +111,14 @@
       "serviceArea": 10000,
       "rentalCost": 400000,
       "maxPeople": 5,
-
       "rentalType": {
         "rentalTypeId": 3,
         "rentalTypeName": "day"
       },
-
       "serviceType": {
         "serviceTypeId": 2,
         "serviceTypeName": "House"
       },
-
       "roomStandard": "normal",
       "extraAmenity": "Có thêm bếp nướng",
       "levels": 2
@@ -146,200 +129,206 @@
       "serviceArea": 3000,
       "rentalCost": 90000,
       "maxPeople": 2,
-
       "rentalType": {
         "rentalTypeId": 4,
         "rentalTypeName": "hour"
       },
-
       "serviceType": {
         "serviceTypeId": 3,
         "serviceTypeName": "Room"
       },
-
       "roomStandard": "normal",
       "extraAmenity": "Có tivi"
     }
   ],
-
   "customerTypes": [
     {
-      "customerTypeId": 1,
+      "id": 1,
       "customerTypeName": "Diamond"
     },
     {
-      "customerTypeId": 2,
+      "id": 2,
       "customerTypeName": "Platinum"
     },
     {
-      "customerTypeId": 3,
+      "id": 3,
       "customerTypeName": "Gold"
     },
     {
-      "customerTypeId": 4,
+      "id": 4,
       "customerTypeName": "Silver"
     },
     {
-      "customerTypeId": 5,
+      "id": 5,
       "customerTypeName": "Member"
     }
   ],
-
   "customers": [
     {
-      "customerId": 1,
+      "id": "CUS-0001",
       "customerName": "Nguyễn Thị Hào",
       "dateOfBirth": "1970-11-07",
-      "sex": false,
+      "sex": "false",
       "identityNumber": "643431213",
       "phoneNumber": "0945423362",
       "email": "thihao07@gmail.com",
       "address": "23 Nguyễn Hoàng, Đà Nẵng",
-
       "customerType": {
+        "id": 5,
         "customerTypeName": "Member"
       }
     },
     {
-      "customerId": 2,
+      "id": "CUS-0002",
       "customerName": "Phạm Xuân Diệu",
       "dateOfBirth": "1992-08-08",
-      "sex": true,
+      "sex": "true",
       "identityNumber": "865342123",
       "phoneNumber": "0954333333",
       "email": "xuandieu92@gmail.com",
       "address": "K77/22 Thái Phiên, Quảng Trị",
-
       "customerType": {
+        "id": 3,
         "customerTypeName": "Gold"
       }
     },
     {
-      "customerId": 3,
+      "id": "CUS-0003",
       "customerName": "Trương Đình Nghệ",
       "dateOfBirth": "1990-02-27",
-      "sex": true,
+      "sex": "true",
       "identityNumber": "488645199",
       "phoneNumber": "0373213122",
       "email": "nghenhan2702@gmail.com",
       "address": "K323/12 Ông Ích Khiêm, Vinh",
-
       "customerType": {
+        "id": 1,
         "customerTypeName": "Diamond"
       }
     },
     {
-      "customerId": 4,
+      "id": "CUS-0004",
       "customerName": "Dương Văn Quan",
       "dateOfBirth": "1981-07-08",
-      "sex": true,
+      "sex": "true",
       "identityNumber": "543432111",
       "phoneNumber": "0490039241",
       "email": "duongquan@gmail.com",
       "address": "K453/12 Lê Lợi, Đà Nẵng",
-
       "customerType": {
+        "id": 1,
         "customerTypeName": "Diamond"
       }
     },
     {
-      "customerId": 5,
+      "id": "CUS-0005",
       "customerName": "Hoàng Trần Nhi Nhi",
       "dateOfBirth": "1995-12-09",
-      "sex": false,
+      "sex": "false",
       "identityNumber": "795453345",
       "phoneNumber": "0312345678",
       "email": "nhinhi123@gmail.com",
       "address": "224 Lý Thái Tổ, Gia Lai",
-
       "customerType": {
+        "id": 4,
         "customerTypeName": "Silver"
       }
     },
     {
-      "customerId": 6,
+      "id": "CUS-0006",
       "customerName": "Tôn Nữ Mộc Châu",
       "dateOfBirth": "2005-12-06",
-      "sex": false,
+      "sex": "false",
       "identityNumber": "732434215",
       "phoneNumber": "0988888844",
       "email": "tonnuchau@gmail.com",
       "address": "37 Yên Thế, Đà Nẵng",
-
       "customerType": {
+        "id": 4,
         "customerTypeName": "Silver"
       }
     },
     {
-      "customerId": 7,
+      "id": "CUS-0007",
       "customerName": "Nguyễn Mỹ Kim",
       "dateOfBirth": "1984-04-08",
-      "sex": false,
+      "sex": "false",
       "identityNumber": "856453123",
       "phoneNumber": "0912345698",
       "email": "kimcuong84@gmail.com",
       "address": "K123/45 Lê Lợi, Hồ Chí Minh",
-
       "customerType": {
+        "id": 1,
         "customerTypeName": "Diamond"
       }
     },
     {
-      "customerId": 8,
+      "id": "CUS-0008",
       "customerName": "Nguyễn Thị Hào",
       "dateOfBirth": "1999-04-08",
-      "sex": false,
+      "sex": "false",
       "identityNumber": "965656433",
       "phoneNumber": "0763212345",
       "email": "haohao99@gmail.com",
       "address": "55 Nguyễn Văn Linh, Kon Tum",
-
       "customerType": {
+        "id": 3,
         "customerTypeName": "Gold"
       }
     },
     {
-      "customerId": 9,
+      "id": "CUS-0009",
       "customerName": "Trần Đại Danh",
       "dateOfBirth": "1994-07-01",
-      "sex": true,
+      "sex": "true",
       "identityNumber": "432341235",
       "phoneNumber": "0643343433",
       "email": "danhhai99@gmail.com",
       "address": "24 Lý Thường Kiệt, Quảng Ngãi",
-
       "customerType": {
+        "id": 1,
         "customerTypeName": "Diamond"
       }
     },
     {
-      "customerId": 10,
+      "id": "CUS-0010",
       "customerName": "Nguyễn Tâm Đắc",
       "dateOfBirth": "1989-07-01",
-      "sex": true,
+      "sex": "true",
       "identityNumber": "344343432",
       "phoneNumber": "0987654321",
       "email": "dactam@gmail.com",
       "address": "22 Ngô Quyền, Đà Nẵng",
-
       "customerType": {
+        "id": 2,
+        "customerTypeName": "Platinum"
+      }
+    },
+    {
+      "id": "CUS-0011",
+      "customerName": "Quoc Khanh",
+      "dateOfBirth": "02-09-1997",
+      "sex": "false",
+      "identityNumber": "123456789",
+      "phoneNumber": "0901234567",
+      "email": "khanh@gmail.com",
+      "address": "K83/38 Huynh Ngoc Hue",
+      "customerType": {
+        "id": 2,
         "customerTypeName": "Platinum"
       }
     }
   ],
-
   "contracts": [
     {
       "contractId": 1,
       "startDate": "2020-07-14",
       "endDate": "2020-07-21",
       "deposit": 200000,
-
       "customer": {
         "customerId": 3,
         "customerName": "Trương Đình Nghệ"
       },
-
       "facility": {
         "serviceId": 1,
         "serviceName": "Villa Beach Front"
@@ -350,12 +339,10 @@
       "startDate": "2021-03-15",
       "endDate": "2021-03-17",
       "deposit": 50000,
-
       "customer": {
         "customerId": 4,
         "customerName": "Dương Văn Quan"
       },
-
       "facility": {
         "serviceId": 2,
         "serviceName": "House Princess 01"
@@ -366,12 +353,10 @@
       "startDate": "2021-01-14",
       "endDate": "2021-01-18",
       "deposit": 100000,
-
       "customer": {
         "customerId": 5,
         "customerName": "Hoàng Trần Nhi Nhi"
       },
-
       "facility": {
         "serviceId": 5,
         "serviceName": "House Princess 02"
@@ -382,12 +367,10 @@
       "startDate": "2021-07-14",
       "endDate": "2021-07-15",
       "deposit": 0,
-
       "customer": {
         "customerId": 2,
         "customerName": "Phạm Xuân Diệu"
       },
-
       "facility": {
         "serviceId": 6,
         "serviceName": "Room Twin 02"
@@ -398,12 +381,10 @@
       "startDate": "2021-06-01",
       "endDate": "2021-06-03",
       "deposit": 0,
-
       "customer": {
         "customerId": 7,
         "customerName": "Nguyễn Mỹ Kim"
       },
-
       "facility": {
         "serviceId": 6,
         "serviceName": "Room Twin 02"
@@ -414,12 +395,10 @@
       "startDate": "2021-09-02",
       "endDate": "2021-09-05",
       "deposit": 100000,
-
       "customer": {
         "customerId": 4,
         "customerName": "Dương Văn Quan"
       },
-
       "facility": {
         "serviceId": 4,
         "serviceName": "Villa No Beach Front"
@@ -430,12 +409,10 @@
       "startDate": "2021-06-17",
       "endDate": "2021-06-18",
       "deposit": 150000,
-
       "customer": {
         "customerId": 4,
         "customerName": "Dương Văn Quan"
       },
-
       "facility": {
         "serviceId": 1,
         "serviceName": "Villa Beach Front"

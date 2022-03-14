@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {CustomerService} from "../../service/customer.service";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
+import {CustomerTypeService} from "../../service/customer-type.service";
+import {CustomerType} from "../../model/customer-type";
+import {Customer} from "../../model/customer";
 
 @Component({
   selector: 'app-edit-customer',
@@ -7,9 +13,77 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditCustomerComponent implements OnInit {
 
-  constructor() { }
+  customerForm = new FormGroup({
+    id: new FormControl('',
+      Validators.compose([Validators.required, Validators.pattern("^CUS-\\d{4}$")])),
 
-  ngOnInit(): void {
+    customerName: new FormControl('',
+      Validators.required),
+
+    dateOfBirth: new FormControl('',
+      Validators.compose([Validators.required, Validators.pattern("^(\\d){2}-(\\d){2}-(\\d){4}$")])),
+
+    sex: new FormControl(),
+
+    identityNumber: new FormControl('',
+      Validators.compose([Validators.required, Validators.pattern("^((\\d){9}|(\\d){12})$")])),
+
+    phoneNumber: new FormControl('',
+      Validators.compose([Validators.required, Validators.pattern("^(\\(84\\)\\+|0)(90|91)(\\d){7}$")])),
+
+    email: new FormControl('',
+      Validators.compose([Validators.required, Validators.email])),
+
+    address: new FormControl('',
+      Validators.required),
+
+    customerType: new FormControl('',
+      Validators.required)
+  });
+
+  customerTypes: CustomerType[];
+  id: string;
+
+  constructor(
+    private customerService: CustomerService,
+    private customerTypeService: CustomerTypeService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {
+  }
+
+  ngOnInit() {
+    this.customerTypeService.getAllCustomerTypes().subscribe(customerTypes => {
+      this.customerTypes = customerTypes;
+      this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+        this.id = paramMap.get('id');
+        this.getCustomer(this.id);
+      });
+    });
+  }
+
+  getCustomer(id: string) {
+    return this.customerService.findCustomerById(id).subscribe(customer => {
+      this.customerForm.setValue(customer);
+      console.log(customer);
+    }, error => {
+      console.log(error);
+    })
+  }
+
+  updateCustomer() {
+    const customer = this.customerForm.value;
+    console.log(customer);
+
+    if (this.customerForm.valid) {
+      this.customerService.updateCustomer(this.id, customer).subscribe(() => {
+        console.log('update customer success!');
+        this.router.navigateByUrl('/customer').then(r => console.log('back to customer list!'));
+      }, error => {
+        console.log(error);
+      })
+    }
+
   }
 
 }

@@ -21,4 +21,17 @@ export class CustomerService {
   saveCustomer(customer): Observable<Customer> {
     return this.http.post<Customer>(JSON_URL + '/customers', customer);
   }
+
+  findCustomerById(id: string): Observable<Customer> {
+    return this.http.get<Customer>(JSON_URL + '/customers/' + id);
+  }
+
+  updateCustomer(id: string, customer: Customer): Observable<Customer> {
+    return this.http.put<Customer>(JSON_URL + '/customers/' + id, customer);
+  }
+
+  deleteCustomer(id: string): Observable<Customer> {
+    return this.http.delete<Customer>(JSON_URL + '/customers/' + id);
+  }
+
 }

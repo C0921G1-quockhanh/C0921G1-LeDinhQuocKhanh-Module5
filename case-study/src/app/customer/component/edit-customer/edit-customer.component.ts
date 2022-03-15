@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomerService} from "../../service/customer.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {CustomerTypeService} from "../../service/customer-type.service";
 import {CustomerType} from "../../model/customer-type";
 import {Customer} from "../../model/customer";
+import {differenceInYears} from "date-fns";
 
 @Component({
   selector: 'app-edit-customer',
@@ -21,7 +22,8 @@ export class EditCustomerComponent implements OnInit {
       Validators.required),
 
     dateOfBirth: new FormControl('',
-      Validators.compose([Validators.required, Validators.pattern("^(\\d){2}-(\\d){2}-(\\d){4}$")])),
+      Validators.compose([Validators.required, Validators.pattern("^(\\d){4}-(\\d){2}-(\\d){2}$"),
+      this.checkDateOfBirth])),
 
     sex: new FormControl(),
 
@@ -55,10 +57,12 @@ export class EditCustomerComponent implements OnInit {
   ngOnInit() {
     this.customerTypeService.getAllCustomerTypes().subscribe(customerTypes => {
       this.customerTypes = customerTypes;
+
       this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
         this.id = paramMap.get('id');
         this.getCustomer(this.id);
       });
+
     });
   }
 
@@ -83,7 +87,20 @@ export class EditCustomerComponent implements OnInit {
         console.log(error);
       })
     }
+  }
 
+  checkDateOfBirth(abstractControl: AbstractControl): any {
+    //dua phuong thuc checkDateOfBirth vao trong validator thi chi can abstractControl.value
+    //thi se hieu la value tai the html do
+
+    const dateOfBirth = abstractControl.value;
+    const now = new Date();
+    const birthday = new Date(dateOfBirth);
+
+    const years = differenceInYears(now,birthday);
+    console.log(years);
+
+    return years >= 18 ? null : {not18YearsOld: true};
   }
 
 }

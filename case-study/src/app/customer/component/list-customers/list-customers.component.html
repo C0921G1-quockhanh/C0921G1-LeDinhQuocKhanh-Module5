@@ -175,7 +175,7 @@
       </thead>
       <tbody>
 
-      <tr *ngFor="let customer of customers">
+      <tr *ngFor="let customer of customers | paginate: { itemsPerPage: 2, currentPage: p }">
         <th scope="row">{{customer.id}}</th>
         <td>{{customer.customerName}}</td>
         <td>{{customer.customerType.customerTypeName}}</td>
@@ -193,11 +193,15 @@
         <td>{{customer.address}}</td>
 
         <td>
+          <!-- mang URL-->
           <a [routerLink]="['/customer/edit',customer.id]" class="text-dark text-decoration-none">Edit</a>
         </td>
 
         <td>
-          <a href="/customer/{id}/delete(id={{customer.id}})" class="text-dark text-decoration-none">Delete</a>
+          <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                  data-bs-target="#deleteModal" (click)="showModal(customer.id)">
+            Delete
+          </button>
         </td>
       </tr>
 
@@ -216,4 +220,49 @@
   </div>
 </div>
 
-<!--<router-outlet></router-outlet>-->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <p>Customer Id: {{customer?.id}}</p>
+        <p>Customer name: {{customer?.customerName}}</p>
+        <p>Customer address: {{customer?.address}}</p>
+      </div>
+
+      <div class="modal-footer">
+<!--        dismiss modal-->
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="deleteCustomer(customer?.id)">Delete</button>
+<!--        <button type="button" class="btn btn-secondary" (click)="deleteCustomer(customer?.id)">Delete</button>-->
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!--      search k tao form-->
+      <div class="mt-3 mb-3">
+
+        <div class="mb-3">
+          <label for="customerName" class="form-label">Customer Name: </label>
+          <input #customerName type="text" class="form-control" id="customerName" name="customerName" placeholder="Type customer name">
+        </div>
+
+        <div class="mb-3">
+          <label for="address" class="form-label">Address: </label>
+          <input #address type="text" class="form-control" id="address" name="address" placeholder="Type address">
+        </div>
+
+        <input type="submit" value="Search" (click)="searchCustomer(customerName.value,address.value)">
+
+      </div>
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+

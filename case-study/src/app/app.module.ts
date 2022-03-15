@@ -10,6 +10,7 @@ import { ListContractsComponent } from './contract/component/list-contracts/list
 import { CreateContractComponent } from './contract/component/create-contract/create-contract.component';
 import { EditServiceComponent } from './facility/component/edit-service/edit-service.component';
 import {CustomerConfigModule} from "./customer/customer-config/customer-config.module";
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {CustomerConfigModule} from "./customer/customer-config/customer-config.m
     BrowserModule,
     AppRoutingModule,
     CustomerConfigModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

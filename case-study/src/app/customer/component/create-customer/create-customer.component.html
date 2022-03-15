@@ -292,7 +292,8 @@
 
       <div class="mb-3">
         <label for="dateOfBirth" class="form-label">Date Of Birth: </label>
-        <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" formControlName="dateOfBirth">
+        <input type="text" class="form-control" id="dateOfBirth" name="dateOfBirth"
+               formControlName="dateOfBirth">
       </div>
 
       <div class="mb-3 text-danger"
@@ -305,6 +306,12 @@
            *ngIf="customerForm.get('dateOfBirth').hasError('pattern') &&
                   (customerForm.get('dateOfBirth').dirty || customerForm.get('dateOfBirth').touched)">
         Please type right format date of birth!
+      </div>
+
+      <div class="mb-3 text-danger"
+           *ngIf="customerForm.get('dateOfBirth').hasError('not18YearsOld') &&
+                  (customerForm.get('dateOfBirth').dirty || customerForm.get('dateOfBirth').touched)">
+        Customer age greater than 18!
       </div>
 
       <div class="mb-3">

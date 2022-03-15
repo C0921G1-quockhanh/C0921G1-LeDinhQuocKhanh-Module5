@@ -34,4 +34,8 @@ export class CustomerService {
     return this.http.delete<Customer>(JSON_URL + '/customers/' + id);
   }
 
+  searchCustomer(customerName: string,address: string): Observable<Customer[]> {
+    return this.http.get<Customer[]>(JSON_URL + '/customers?customerName_like=' + customerName + '&address_like=' + address);
+  }
+
 }

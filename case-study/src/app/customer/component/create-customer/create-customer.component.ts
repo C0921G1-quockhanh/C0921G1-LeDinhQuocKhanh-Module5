@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomerService} from '../../service/customer.service';
 import {CustomerType} from '../../model/customer-type';
 import {CustomerTypeService} from '../../service/customer-type.service';
 import {Router} from "@angular/router";
+import {differenceInYears} from 'date-fns';
 
 @Component({
   selector: 'app-create-customer',
@@ -20,7 +21,7 @@ export class CreateCustomerComponent implements OnInit {
       Validators.required),
 
     dateOfBirth: new FormControl('',
-      Validators.compose([Validators.required,Validators.pattern("^(\\d){2}-(\\d){2}-(\\d){4}$")])),
+      Validators.compose([Validators.required,Validators.pattern("^(\\d){4}-(\\d){2}-(\\d){2}$"),this.checkDateOfBirth])),
 
     sex: new FormControl(),
 
@@ -72,5 +73,19 @@ export class CreateCustomerComponent implements OnInit {
         console.log(error);
       })
     }
+  }
+
+  checkDateOfBirth(abstractControl: AbstractControl): any {
+    //dua phuong thuc checkDateOfBirth vao trong validator thi chi can abstractControl.value
+    //thi se hieu la value tai the html do
+
+    const dateOfBirth = abstractControl.value;
+    const now = new Date();
+    const birthday = new Date(dateOfBirth);
+
+    const years = differenceInYears(now,birthday);
+    console.log(years);
+
+    return years >= 18 ? null : {not18YearsOld: true};
   }
 }

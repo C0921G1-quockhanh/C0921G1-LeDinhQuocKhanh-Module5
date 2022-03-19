@@ -1,19 +1,118 @@
 {
-  "posts": [
+  "productTypes": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "name": "Sting",
+      "manufacturer": "ABC",
+      "price": 250000,
+      "unit": "Box"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "name": "Tiger",
+      "manufacturer": "ABC",
+      "price": 220000,
+      "unit": "Box"
+    },
+    {
+      "id": 3,
+      "name": "Oshi",
+      "manufacturer": "ABC",
+      "price": 100000,
+      "unit": "Box"
+    },
+    {
+      "id": 4,
+      "name": "Beer",
+      "manufacturer": "ABC",
+      "price": 300000,
+      "unit": "Box"
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "products": [
+    {
+      "id": "LH-0001",
+      "productType": {
+        "id": 1,
+        "name": "Sting",
+        "manufacturer": "ABC",
+        "price": 250000,
+        "unit": "Box"
+      },
+      "quantity": 5,
+      "startDay": "2020-12-28",
+      "createDay": "2020-09-10",
+      "endDay": "2021-09-10"
+    },
+    {
+      "id": "LH-0002",
+      "productType": {
+        "id": 4,
+        "name": "Beer",
+        "manufacturer": "ABC",
+        "price": 300000,
+        "unit": "Box"
+      },
+      "quantity": 10,
+      "startDay": "2020-11-01",
+      "createDay": "2020-10-15",
+      "endDay": "2021-10-15"
+    },
+    {
+      "id": "LH-0003",
+      "productType": {
+        "id": 3,
+        "name": "Oshi",
+        "manufacturer": "ABC",
+        "price": 100000,
+        "unit": "Box"
+      },
+      "quantity": "5",
+      "startDay": "2021-06-16",
+      "createDay": "2021-03-18",
+      "endDay": "2022-06-16"
+    },
+    {
+      "id": "LH-0004",
+      "productType": {
+        "id": 3,
+        "name": "Oshi",
+        "manufacturer": "ABC",
+        "price": 100000,
+        "unit": "Box"
+      },
+      "quantity": "5",
+      "startDay": "2021-06-16",
+      "createDay": "2021-03-18",
+      "endDay": "2022-06-16"
+    },
+    {
+      "id": "LH-0006",
+      "productType": {
+        "id": 2,
+        "name": "Tiger",
+        "manufacturer": "ABC",
+        "price": 220000,
+        "unit": "Box"
+      },
+      "quantity": 5,
+      "startDay": "2019-11-01",
+      "createDay": "2019-10-15",
+      "endDay": "2020-10-15"
+    },
+    {
+      "id": "LH-0008",
+      "productType": {
+        "id": 2,
+        "name": "Tiger",
+        "manufacturer": "ABC",
+        "price": 220000,
+        "unit": "Box"
+      },
+      "quantity": 5,
+      "startDay": "2020-05-12",
+      "createDay": "2020-05-11",
+      "endDay": "2021-05-12"
+    }
+  ]
 }

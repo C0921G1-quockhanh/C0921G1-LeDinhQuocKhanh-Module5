@@ -1,0 +1,110 @@
+<div class="row container-fluid">
+  <div class="col-xl-12">
+    <form [formGroup]="productForm" (ngSubmit)="addProduct()" class="mb-3">
+
+      <div class="mb-3">
+        <label for="id" class="form-label">Product Id: </label>
+        <input type="text" class="form-control" id="id" name="id" formControlName="id">
+      </div>
+
+      <div class="mb-3 text-danger"
+           *ngIf="productForm.get('id').hasError('required') &&
+                  (productForm.get('id').dirty || productForm.get('id').touched)">
+        Please type product id!
+      </div>
+
+      <div class="mb-3 text-danger"
+           *ngIf="productForm.get('id').hasError('pattern') &&
+                  (productForm.get('id').dirty || productForm.get('id').touched)">
+        Please type right format of product id!
+      </div>
+
+      <div class="mb-3">
+        <label for="productType" class="form-label">Product Type: </label><br>
+
+        <select id="productType" name="productType" formControlName="productType">
+          <option *ngFor="let productType of productTypes" [ngValue]="productType">{{productType.name}}</option>
+        </select>
+      </div>
+
+      <div class="mb-3 text-danger"
+           *ngIf="productForm.get('productType').hasError('required') &&
+                  (productForm.get('productType').dirty || productForm.get('productType').touched)">
+        Please choose product type!
+      </div>
+
+      <div class="mb-3">
+        <label for="quantity" class="form-label">Quantity: </label>
+        <input type="number" class="form-control" id="quantity" name="quantity" formControlName="quantity">
+      </div>
+
+      <div class="mb-3 text-danger"
+           *ngIf="productForm.get('quantity').hasError('required') &&
+                  (productForm.get('quantity').dirty || productForm.get('quantity').touched)">
+        Please type product quantity!
+      </div>
+
+      <div class="mb-3 text-danger"
+           *ngIf="productForm.get('quantity').hasError('min') &&
+                  (productForm.get('quantity').dirty || productForm.get('quantity').touched)">
+        Please type positive integer!
+      </div>
+
+      <div class="mb-3">
+        <label for="startDay" class="form-label">Start Day: </label>
+        <input type="date" class="form-control" id="startDay" name="startDay" formControlName="startDay">
+      </div>
+
+      <div class="mb-3 text-danger"
+           *ngIf="productForm.get('startDay').hasError('required') &&
+                  (productForm.get('startDay').dirty || productForm.get('startDay').touched)">
+        Please pick start date!
+      </div>
+
+      <div class="mb-3">
+        <label for="createDay" class="form-label">Create Day: </label>
+        <input type="date" class="form-control" id="createDay" name="createDay" formControlName="createDay">
+      </div>
+
+      <div class="mb-3 text-danger"
+           *ngIf="productForm.get('createDay').hasError('required') &&
+                  (productForm.get('createDay').dirty || productForm.get('createDay').touched)">
+        Please pick create date!
+      </div>
+
+      <div class="mb-3">
+        <label for="endDay" class="form-label">End Day: </label>
+        <input type="date" class="form-control" id="endDay" name="endDay" formControlName="endDay">
+      </div>
+
+      <div class="mb-3 text-danger"
+           *ngIf="productForm.get('endDay').hasError('required') &&
+                  (productForm.get('endDay').dirty || productForm.get('endDay').touched)">
+        Please pick end date!
+      </div>
+
+
+<!--      <div class="mb-3 text-danger"-->
+<!--           *ngIf="customerForm.get('id').hasError('pattern') &&-->
+<!--                  (customerForm.get('id').dirty || customerForm.get('id').touched)">-->
+<!--        Please type right format customer id!-->
+<!--      </div>-->
+
+
+
+<!--      <div class="mb-3 text-danger"-->
+<!--           *ngIf="customerForm.get('customerType').hasError('required') &&-->
+<!--                  (customerForm.get('customerType').dirty || customerForm.get('customerType').touched)">-->
+<!--        Please choose customer type!-->
+<!--      </div>-->
+
+
+      <button type="submit" class="btn btn-secondary" >Add New Product</button>
+
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left-circle-fill ms-5" viewBox="0 0 16 16">
+        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+      </svg>
+      <a routerLink="/product" class="ms-1 text-decoration-none text-dark">Back to product list!</a>
+    </form>
+  </div>
+</div>
